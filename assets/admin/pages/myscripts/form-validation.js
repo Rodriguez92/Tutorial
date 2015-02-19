@@ -54,6 +54,7 @@ var FormValidation = function () {
                         .closest('.form-group').removeClass('has-error'); // set error class to the control group
                 },
                 submitHandler: function (form) {
+
                     $.ajax({
                         url: $('#formulario_nueva_noticia').attr('action'),
                         type: 'post',
@@ -61,20 +62,21 @@ var FormValidation = function () {
                         dataType: 'json',
                         data: $('#formulario_nueva_noticia').serialize(),
                         beforeSend: function () {
-                            //
+                            alert('Estoy a puento de enviar los datos');
                         },
                         error: function (jqXHR, status, error) {
                             alert("Hubo un error "+error);
                         },
-                        success: function (data) {
-                            if(data.exito){
-                                alert(data.msg);
+                        success: function (respuesta) {
+                            if(respuesta.exito){
+                                alert(respuesta.mensaje);
                                 parent.location.reload();
                             }else{
-                                alert(data.msg);
+                                alert(respuesta.mensaje);
                             }
                         }
                     });
+
                 }
             });
     }

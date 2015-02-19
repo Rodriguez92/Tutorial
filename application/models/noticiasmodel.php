@@ -20,7 +20,7 @@ class NoticiasModel extends CI_Model {
 
 	public function insertar_noticias($noticia)
 	{
-		return $this->db->insert('noticias', $noticia);
+		 return $this->db->insert('noticias', $noticia);
 	}
 
 }
